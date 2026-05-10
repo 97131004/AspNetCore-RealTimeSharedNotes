@@ -43,7 +43,7 @@ public class NotesRepository : INotesRepository
         var deleted = await _db.Notes
             .Where(n => n.NoteId == noteId)
             .ExecuteDeleteAsync(); //atomic deletion, works with race conditions, thus always succeeds
-        return true; //still returning true, for proper frontend handling
+        return deleted > 0;
     }
 }
 

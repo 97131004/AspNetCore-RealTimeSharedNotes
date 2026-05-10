@@ -24,11 +24,9 @@ public class ApiKeyRepository : IApiKeyRepository
 
     public async Task<bool> DeleteApiKeyAsync(string userId)
     {
-        var key = await _db.ApiKeys.FindAsync(userId);
-        if (key == null)
-            return false;
-        _db.ApiKeys.Remove(key);
-        await _db.SaveChangesAsync();
-        return true;
+        var deleted = await _db.ApiKeys
+            .Where(a => a.UserId == userId)
+            .ExecuteDeleteAsync();
+        return deleted > 0;
     }
 }
