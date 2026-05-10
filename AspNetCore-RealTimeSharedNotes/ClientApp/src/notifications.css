@@ -1,0 +1,40 @@
+.notifications-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    pointer-events: none;
+    width: 100%;
+}
+
+.toast {
+    background: #fff;
+    color: #1a1a2e;
+    padding: 0.7rem 1.1rem;
+    font-size: 1rem;
+    pointer-events: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.toast.success {
+    background: green;
+    color: white;
+}
+.toast.error {
+    background: red;
+    color: white;
+}
+.toast.warning {
+    background: orange;
+    color: white;
+}
+.toast.offline {
+    background: black;
+    color: white;
+}

@@ -1,0 +1,46 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "login";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+}
+
+<div class="login-wrap">
+    <div class="login-box">
+        <h1 class="login-title">RealTimeSharedNotes</h1>
+        <p class="login-sub">login to continue</p>
+
+        <form asp-controller="Home" asp-action="Login" method="post" id="login-form">
+            @Html.AntiForgeryToken()
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div asp-validation-summary="All" class="validation-errors form-error"></div>
+            }
+
+            <div class="form-group">
+                <label asp-for="Email">email</label>
+                <input asp-for="Email" class="form-input" type="email" autocomplete="email" placeholder="you@example.com" data-testid="email-input" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">password</label>
+                <input asp-for="Password" class="form-input" type="password" autocomplete="current-password" placeholder="••••••" data-testid="password-input" />
+            </div>
+
+            <button type="submit" class="btn-primary" id="login-btn" data-testid="login-btn">
+                login
+            </button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('login-btn').addEventListener('submit', function () {
+            this.disabled = true;
+        });
+    </script>
+}

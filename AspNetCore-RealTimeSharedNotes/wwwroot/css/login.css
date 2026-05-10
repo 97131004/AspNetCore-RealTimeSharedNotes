@@ -1,0 +1,49 @@
+.login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.login-box {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #1a1a2e;
+}
+
+.login-sub {
+    font-size: 0.85rem;
+    margin-bottom: 1.75rem;
+    color: #6b7a99;
+}
+
+.login-box .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 0.65rem;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+}
+
+.validation-errors {
+    margin-bottom: 1rem;
+}
+
+.validation-errors li {
+    list-style: none;
+}
+
+@media (max-width: 420px) {
+    .login-box {
+        padding: 2rem 1.25rem;
+    }
+}

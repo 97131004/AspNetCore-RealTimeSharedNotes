@@ -1,0 +1,172 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    background: #f2f4f8;
+    color: #1a1a2e;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.app-nav {
+    background: #fff;
+}
+
+
+.nav-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: auto;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+}
+
+.nav-brand-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1a1a2e;
+    line-height: 1.2;
+}
+
+.nav-brand-user {
+    font-size: 0.78rem;
+    color: #6b7a99;
+    line-height: 1.2;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #3a5a8a;
+    font-size: 0.95rem;
+}
+.nav-link:hover {
+    color: #1a1a2e;
+}
+
+.btn-nav-logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #3a5a8a;
+    padding: 0;
+}
+.btn-nav-logout:hover {
+    color: #1a1a2e;
+}
+.btn-nav-logout:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+}
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a5a7a;
+}
+
+.form-input {
+    padding: 0.6rem 0.75rem;
+    border: none;
+    font-size: 1rem;
+    background: #eef1f7;
+    color: #1a1a2e;
+    width: 100%;
+    font-family: inherit;
+    outline: none;
+}
+.form-input:focus {
+    background: #e4e9f4;
+}
+.form-input::placeholder {
+    color: #9aa8c0;
+}
+
+select.form-input {
+    appearance: auto;
+    border-right: 1rem solid transparent;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #2a6fd4;
+    color: #fff;
+    border: none;
+    padding: 0.55rem 1.25rem;
+    font-size: 1rem;
+    font-family: inherit;
+}
+.btn-primary:hover {
+    background: #1f5bb5;
+}
+.btn-primary:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #7a8aa8;
+    font-weight: 700;
+    font-family: inherit;
+}
+.btn-delete:hover {
+    background: none;
+    color: #c0392b;
+}
+.btn-delete:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.form-error {
+    color: #b94a00;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .nav-inner { padding: 0 1rem 0.6rem; }
+    .nav-links { gap: 1rem; }
+}
+

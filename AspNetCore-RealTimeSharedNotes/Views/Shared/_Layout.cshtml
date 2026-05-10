@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dist/assets/notifications.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <nav class="app-nav">
+            <div class="nav-inner">
+                <div class="nav-brand">
+                    <span class="nav-brand-title">RealTimeSharedNotes</span>
+                    <span class="nav-brand-user">@User.Identity?.Name &middot; @(User.IsInRole(UserRoles.SuperAdmin) ? UserRoles.SuperAdmin : User.IsInRole(UserRoles.Admin) ? UserRoles.Admin : UserRoles.User)</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/notes" class="nav-link">notes</a>
+                    @if (User.IsInRole(UserRoles.Admin) || User.IsInRole(UserRoles.SuperAdmin))
+                    {
+                        <a href="/users" class="nav-link">users</a>
+                    }
+                    <form asp-controller="Home" asp-action="Logout" method="post" class="nav-logout-form">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn-nav-logout">logout</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    }
+
+    <div id="notifications-container" class="notifications-container"></div>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <script>
+        window.__userId              = '@(ViewData["UserId"] as string ?? "")';
+        window.__userRole            = '@(ViewData["UserRole"] as string ?? UserRoles.User)';
+        window.__roleSuperAdmin      = '@UserRoles.SuperAdmin';
+        window.__roleAdmin           = '@UserRoles.Admin';
+        window.__roleUser            = '@UserRoles.User';
+        window.__passwordMinLength   = @ModelConstants.PasswordMinLength;
+        window.__noteContentMaxLength = @ModelConstants.NoteContentMaxLength;
+    </script>
+
+    <script type="module" src="~/dist/js/notifications.js" asp-append-version="true"></script>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+            document.addEventListener('DOMContentLoaded', () =>
+                window.Notify.show('@Html.Raw(TempData["SuccessMessage"])', 'success'));
+        </script>
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
