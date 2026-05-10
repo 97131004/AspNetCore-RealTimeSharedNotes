@@ -58,7 +58,7 @@ Monolithic design: MVC + service layer + data layer (communicates with DB). The 
 
 **Database Setup:**
 
-Do once before running web app. Database connection string in `appsettings.json`.
+Run once (from main projects root) before running web app. Database connection string in `appsettings.json`.
 
 ```
 dotnet ef database drop --force
@@ -70,7 +70,7 @@ add Init dotnet ef database update
 
 **Playwright Browser Install (only needed for playwright test project):**
 
-To install Playwright's chromimum browser, build AspNetCore-RealTimeSharedNotes.PlaywrightTests project once. Then run the following in PowerShell (as admin) from directory `AspNetCore-RealTimeSharedNotes/PlaywrightTests/bin/Debug/net8.0/` :
+To install Playwright's chromimum browser, build `AspNetCore-RealTimeSharedNotes.PlaywrightTests` project once. Then run the following in PowerShell (as admin) from directory `AspNetCore-RealTimeSharedNotes/PlaywrightTests/bin/Debug/net8.0/` :
 
 ```
 ./playwright.ps1 install chromium
