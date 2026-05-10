@@ -4,6 +4,8 @@ A real-time collaborative notes application. Logged-in users can write and post 
 
 ![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/noteslist.PNG?raw=true)
 
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/userslist.PNG?raw=true)
+
 
 ## Technologies & Versions
 
@@ -15,23 +17,23 @@ A real-time collaborative notes application. Logged-in users can write and post 
 - **Real-Time:** SignalR (with auto-reconnect and offline detection)
 - **API:** Web API (REST), OAuth2
 - **API Documentation:** Swagger (`https://localhost:7194/swagger`)
-- **Testing:** Unit testing (NUnit), E2E testing (Playwright)
+- **Testing:** Unit testing (NUnit, Moq), E2E testing (Playwright)
 
 
 ## Architecture
 
-Monolithic design: MVC + service layer + data layer. The backend exposes REST APIs and SignalR endpoints. Controllers use dependency-injected services, which call the data layer (Entity Framework Core). Notes and users are stored in the database. API keys are securely stored (client id  + encrypted client secrets) in database. All user and note changes are broadcast to the frontend via SignalR (delta updates only).
+Monolithic design: MVC + service layer + data layer (communicates with DB). The backend exposes REST APIs and SignalR endpoints. Controllers use dependency-injected services, which call the data layer (Entity Framework Core). Notes and users are stored in the database. API keys are securely stored (client id  + encrypted client secrets) in database. All user and note changes are broadcast to the frontend via SignalR (delta updates only).
 
 
 ## Features
 
-- **Real-Time Notes:** Users post notes, instantly visible to all via SignalR.
+- **Real-Time Notes:** Users post notes, instantly visible to all via `SignalR`.
 - **User & Role Management:** Admins/superadmins manage users and roles. Superadmins can assign admin and user roles. Admins can only assign user role.
 - **Role-Based Access:** Notes and user management restricted by role. Superadmins can delete any note. Admins can delete their own and user's notes. Users can only delete their own notes.
-- **Authentication:** Email/password login. API key support (OAuth2 via client id + client secret).
+- **Authentication:** Email/password login. API key support (`OAuth2` via client id + client secret).
 - **Notifications:** Queued, and responsive notification system (e.g., logout, errors, offline).
-- **UI/UX:** Responsive, minimalistic design. Loading texts and disabled buttons during async ops.
-- **Security:** SQL injection protection, encrypted API client secrets (via ASP.NET Core's IDataProtector), hashed passwords (no raw).
+- **UI/UX:** Responsive, minimalistic design (includes desktop + mobile resolutions). Loading texts and disabled buttons during async ops.
+- **Security:** SQL injection protection, encrypted API client secrets (via ASP.NET Core's `IDataProtector`), hashed passwords (no raw).
 - **Performance:** Optimized queries for frequent operations (e.g., load all notes/users).
 - **Cascade Delete:** Deleting a user removes their notes and API keys.
 - **Logging / Exception Handling:** All exceptions logged asynchronously (non-blocking) to file using a thread-safe producer/consumer queue (`System.Threading.Channels`). Robust user feedback in frontend (not exposing errors to frontend).
@@ -47,11 +49,16 @@ Monolithic design: MVC + service layer + data layer. The backend exposes REST AP
 - `Api` (userId, clientId, encrypted clientSecret)
 - `Notes` (noteId, userId, content)
 
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/db1.png?raw=true)
+
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/db2.png?raw=true)
+
 
 ## Installation
 
 **Database Setup:**
-Do once before running web app, database connection string in appsettings.json.
+
+Do once before running web app. Database connection string in `appsettings.json`.
 
 ```
 dotnet ef database drop --force
@@ -63,7 +70,8 @@ add Init dotnet ef database update
 
 **Playwright Browser Install (only needed for playwright test project):**
 
-To install Playwright's chromimum browser, run the following in PowerShell (as admin) from directory `AspNetCore-RealTimeSharedNotes/PlaywrightTests/bin/Debug/net8.0/` :
+To install Playwright's chromimum browser, build AspNetCore-RealTimeSharedNotes.PlaywrightTests project once. Then run the following in PowerShell (as admin) from directory `AspNetCore-RealTimeSharedNotes/PlaywrightTests/bin/Debug/net8.0/` :
+
 ```
 ./playwright.ps1 install chromium
 ```
@@ -79,6 +87,15 @@ To install Playwright's chromimum browser, run the following in PowerShell (as a
 
 ## Screenshots
 
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/login.PNG?raw=true)
+
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/mobilenoteslist.PNG?raw=true)
+
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/apicreated.PNG?raw=true)
+
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/internetoffline.PNG?raw=true)
+
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/apiswagger.png?raw=true)
 
 
 ## License
