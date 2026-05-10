@@ -10,7 +10,7 @@ A real-time collaborative notes application. Logged-in users can write and post 
 ## Technologies & Versions
 
 - **Backend:** ASP.NET Core (.NET 8)
-- **Frontend:** Vue.js 3 (SPA)
+- **Frontend:** Vue.js 3.4.0 (SPA) with Vite 5.0.0 (Node.JS 20.17.0, Npm 10.8.2)
 - **Database:** MS SQL Server 2022
 - **ORM:** Entity Framework Core
 - **Authentication:** ASP.NET Core Identity (roles: user, admin, superadmin)
@@ -58,13 +58,13 @@ Monolithic design: MVC + service layer + data layer (communicates with DB). The 
 
 **Database Setup:**
 
-Run once (from main projects root) before running web app. Database connection string in `appsettings.json`.
+Run once (from main project's package manager console) before running web app. Database connection string in `appsettings.json`.
 
 ```
 dotnet ef database drop --force
 Remove-Item Migrations* -Recurse
-dotnet ef migrations
-add Init dotnet ef database update
+dotnet ef migrations add Init
+dotnet ef database update
 ```
 
 
