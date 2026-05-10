@@ -67,6 +67,18 @@ dotnet ef migrations add Init
 dotnet ef database update
 ```
 
+---
+
+**First run of the main project:**
+
+On the very first start of the main project `AspNetCore-RealTimeSharedNotes`, a superadmin user will be created with the following credentials (from `appsettings.json`):  
+
+**Email/Username**: `superadmin@email.local`  
+**Password**: `superadmin123!`  
+**Client ID (API/Oauth2)**: `superadmin-sdq9`  
+**Client Secret (API/Oauth2)**: `09cb65b4-ada9-42e9-8779-4f55e68b85a2`  
+
+---
 
 **Playwright Browser Install (only needed for playwright test project):**
 
