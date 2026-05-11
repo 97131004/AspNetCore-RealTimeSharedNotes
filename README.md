@@ -17,7 +17,7 @@ A real-time collaborative notes application. Logged-in users can write and post 
 - **Backend:** ASP.NET Core (.NET 8)
 - **Frontend:** Vue.js 3.4.0 with Vite 5.0.0 (Node.JS 20.17.0, Npm 10.8.2)
 - **Database:** MS SQL Server 2022
-- **ORM:** Entity Framework Core
+- **ORM:** Entity Framework Core 8.0
 - **Authentication:** ASP.NET Core Identity (roles: user, admin, superadmin)
 - **Real-Time:** SignalR (with auto-reconnect and offline detection)
 - **API:** Web API (REST), OAuth2
@@ -38,15 +38,13 @@ Monolithic design: MVC + service layer + data layer (communicates with DB). The 
 - **Authentication:** Email/password login. API key support (`OAuth2` via client id + client secret).
 - **Notifications:** Queued, and responsive notification system (e.g., logout, errors, offline).
 - **UI/UX:** Responsive, minimalistic design (includes desktop + mobile resolutions). Loading texts and disabled buttons during async ops.
-- **Security:** SQL injection protection, encrypted API client secrets (via ASP.NET Core's `IDataProtector`), hashed passwords (no raw).
-- **Performance:** Optimized queries for frequent operations (e.g., load all notes/users).
-- **Cascade Delete:** Deleting a user removes their notes and API keys.
 - **Logging / Exception Handling:** All exceptions logged asynchronously (non-blocking) to file using a thread-safe producer/consumer queue (`System.Threading.Channels`). Robust user feedback in frontend (not exposing error exception to user).
 - **SignalR:** Auto-reconnects after internet loss, with overlay notification.
-- **User Deletion:** If a logged-in user is deleted, they immediately lose posting ability and are logged out on page refresh.
+- **User Deletion:** If a logged-in user is deleted, they immediately lose posting ability and are logged out on page refresh. Deleting a user removes their notes and API keys (SQL Cascade Delete).
 - **API / Swagger:** API documentation & playground at `https://localhost:7194/swagger`.
-- **Database:** Async requests whereever possible. EF writing operations are automatically rolled back when necessary (on error) to prevent partial saves and ensure data consistency.
-
+- **Database:** Async queries whereever possible. EF writing operations are automatically rolled back when necessary (on error) to prevent partial saves and ensure data consistency.
+- **Performance:** Frequent operations (e.g.: load all notes/users) have optimized queries (using .Include in EF Core to avoid N+1 issues).
+- **Security:** SQL injection protection, encrypted API client secrets (via ASP.NET Core's `IDataProtector`), hashed passwords (no raw).
 
 ## Database Structure
 
