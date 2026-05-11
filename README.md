@@ -62,11 +62,10 @@ Monolithic design: MVC + service layer + data layer (communicates with DB). The 
 
 **Database Setup:**
 
-Run once (from main project's package manager console) before running web app:
+Run once (for main project) before running web app:
 
 ```
 dotnet ef database drop --force
-Remove-Item Migrations* -Recurse
 dotnet ef migrations add Init
 dotnet ef database update
 ```
