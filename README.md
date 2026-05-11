@@ -1,6 +1,6 @@
 # ASP.NET Core: Real-Time Shared Notes
 
-A real-time collaborative notes application. Logged-in users can write and post notes, which are instantly replicated and shown to all users without page reloads. The system uses SignalR for real-time updates, Vue.js for a responsive SPA frontend, and a secure ASP.NET Core backend with MS SQL Server and Entity Framework Core.
+A real-time collaborative notes application. Logged-in users can write and post notes, which are instantly replicated and shown to all users without page reloads. The system uses SignalR for real-time updates, Vue.js for a responsive SPA frontend per page, and a secure ASP.NET Core backend with MS SQL Server and Entity Framework Core.
 
 ![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/noteslist.PNG?raw=true)
 
@@ -10,7 +10,7 @@ A real-time collaborative notes application. Logged-in users can write and post 
 ## Technologies & Versions
 
 - **Backend:** ASP.NET Core (.NET 8)
-- **Frontend:** Vue.js 3.4.0 (SPA) with Vite 5.0.0 (Node.JS 20.17.0, Npm 10.8.2)
+- **Frontend:** Vue.js 3.4.0 (SPA per page) with Vite 5.0.0 (Node.JS 20.17.0, Npm 10.8.2)
 - **Database:** MS SQL Server 2022
 - **ORM:** Entity Framework Core
 - **Authentication:** ASP.NET Core Identity (roles: user, admin, superadmin)
@@ -22,7 +22,7 @@ A real-time collaborative notes application. Logged-in users can write and post 
 
 ## Architecture
 
-Monolithic design: MVC + service layer + data layer (communicates with DB). The backend exposes REST APIs and SignalR endpoints. Controllers use dependency-injected services, which call the data layer (Entity Framework Core). Notes and users are stored in the database. API keys are securely stored (client id  + encrypted client secrets) in database. All user and note changes are broadcast to the frontend via SignalR (delta updates only).
+Monolithic design: MVC + service layer + data layer (communicates with DB). The backend exposes REST APIs and SignalR endpoints. Controllers use dependency-injected services, which call the data layer (Entity Framework Core). Notes and users are stored in the database. API keys are securely stored (client id  + encrypted client secrets) in database. All user and note changes are broadcast to the frontend via SignalR (delta updates only). Frontend showcases different approaches: Login page (Razor SSR), Notes page (Vue.js SPA with Signal R), Users page (Vue.js SPA with async fetches).
 
 
 ## Features
