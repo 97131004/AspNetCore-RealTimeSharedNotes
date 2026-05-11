@@ -6,6 +6,8 @@ A real-time collaborative notes application. Logged-in users can write and post 
 
 ![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/userslist.PNG?raw=true)
 
+![screenshot](https://github.com/97131004/AspNetCore-RealTimeSharedNotes/blob/main/Screenshots/playwright_AspNetCore-RealTimeSharedNotes.gif?raw=true)
+
 
 ## Technologies & Versions
 
