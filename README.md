@@ -36,7 +36,7 @@ Monolithic design: MVC + service layer + data layer (communicates with DB). The 
 - **Security:** SQL injection protection, encrypted API client secrets (via ASP.NET Core's `IDataProtector`), hashed passwords (no raw).
 - **Performance:** Optimized queries for frequent operations (e.g., load all notes/users).
 - **Cascade Delete:** Deleting a user removes their notes and API keys.
-- **Logging / Exception Handling:** All exceptions logged asynchronously (non-blocking) to file using a thread-safe producer/consumer queue (`System.Threading.Channels`). Robust user feedback in frontend (not exposing errors to frontend).
+- **Logging / Exception Handling:** All exceptions logged asynchronously (non-blocking) to file using a thread-safe producer/consumer queue (`System.Threading.Channels`). Robust user feedback in frontend (not exposing error exception to user).
 - **SignalR:** Auto-reconnects after internet loss, with overlay notification.
 - **User Deletion:** If a logged-in user is deleted, they immediately lose posting ability and are logged out on page refresh.
 - **API / Swagger:** API documentation & playground at `https://localhost:7194/swagger`.
