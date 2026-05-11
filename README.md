@@ -84,6 +84,8 @@ On the very first start of the main project `AspNetCore-RealTimeSharedNotes`, a 
 
 **Playwright Browser Install (only needed for playwright test project):**
 
+**Note**: Launch the main project at least once before running Playwright tests to ensure the required superadmin user is initialized.  
+
 To install Playwright's chromimum browser, build `AspNetCore-RealTimeSharedNotes.PlaywrightTests` project once. Then run the following in PowerShell (as admin) from directory `AspNetCore-RealTimeSharedNotes/PlaywrightTests/bin/Debug/net8.0/` :
 
 ```
