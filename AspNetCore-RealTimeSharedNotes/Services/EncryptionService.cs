@@ -5,6 +5,7 @@ namespace AspNetCore_RealTimeSharedNotes.Services;
 
 public class EncryptionService : IEncryptionService
 {
+    //https://learn.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/default-settings?view=aspnetcore-2.1
     private readonly IDataProtector _protector;
 
     public EncryptionService(IDataProtectionProvider provider)
