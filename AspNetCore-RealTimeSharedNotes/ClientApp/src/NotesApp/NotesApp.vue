@@ -5,13 +5,13 @@ import { Notify } from '@/notifications.js';
 
 const noteContentMaxLength = window.__noteContentMaxLength;
 
-const notes       = ref([]);
-const newContent  = ref('');
-const isPosting   = ref(false);
-const isLoading   = ref(false);
-const isOnline    = ref(navigator.onLine);
+const notes = ref([]);
+const newContent = ref('');
+const isPosting = ref(false);
+const isLoading = ref(false);
+const isOnline = ref(navigator.onLine);
 const deletingIds = reactive(new Set());
-let connection    = null;
+let connection = null;
 
 function formatTime(iso) {
     const d = new Date(iso);
