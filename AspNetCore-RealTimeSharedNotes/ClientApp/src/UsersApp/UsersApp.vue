@@ -3,15 +3,15 @@ import { ref, reactive, onMounted } from 'vue';
 import { Notify } from '@/notifications.js';
 
 const isSuperAdmin = window.__userRole === window.__roleSuperAdmin;
-const roleUser     = window.__roleUser;
-const roleAdmin    = window.__roleAdmin;
+const roleUser = window.__roleUser;
+const roleAdmin = window.__roleAdmin;
 
-const users       = ref([]);
-const isLoading   = ref(false);
-const isCreating  = ref(false);
+const users = ref([]);
+const isLoading = ref(false);
+const isCreating = ref(false);
 const createError = ref('');
 const deletingIds = reactive(new Set());
-const newApiKey   = ref(null);
+const newApiKey = ref(null);
 
 const form = reactive({ email: '', password: '', role: window.__roleUser });
 
