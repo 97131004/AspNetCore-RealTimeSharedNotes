@@ -107,7 +107,7 @@ To install Playwright's chromimum browser, build `AspNetCore-RealTimeSharedNotes
 To run the load test via Grafana k6, first install k6 via CLI (https://grafana.com/docs/k6/latest/set-up/install-k6/). Then run the following from directory `AspNetCore-RealTimeSharedNotes\LoadTests\` :
 
 ```
-k6 run post_notes_load_test.js
+k6 run k6_post_notes_load_test.js
 ```
 
 ## Testing
@@ -140,7 +140,7 @@ k6 run post_notes_load_test.js
 
 
      execution: local
-        script: post_notes_load_test.js
+        script: k6_post_notes_load_test.js
         output: -
 
      scenarios: (100.00%) 1 scenario, 5000 max VUs, 17m30s max duration:
