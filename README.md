@@ -183,7 +183,6 @@ k6 run post_notes_load_test.js
     http_reqs......................: 7469    49.988311/s
 
     EXECUTION
-    iteration_duration.............: avg=1m3s        min=21.96s med=59.38s  max=2m17s p(90)=1m59s    p(95)=2m1s    
     iterations.....................: 28      0.187398/s
     vus............................: 2480    min=0         max=2480
     vus_max........................: 5000    min=4021      max=5000
@@ -195,8 +194,7 @@ k6 run post_notes_load_test.js
     WEBSOCKET
     ws_connecting..................: avg=175.21ms    min=3.1ms  med=18.43ms max=7.44s p(90)=449.9ms  p(95)=1.05s   
     ws_msgs_received...............: 1138942 7622.678722/s
-    ws_msgs_sent...................: 3352    22.434171/s
-    ws_session_duration............: avg=1m3s        min=21.55s med=59.28s  max=2m17s p(90)=1m59s    p(95)=2m1s    
+    ws_msgs_sent...................: 3352    22.434171/s  
     ws_sessions....................: 2475    16.56461/s
 ```
 
