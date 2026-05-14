@@ -17,7 +17,7 @@ A real-time collaborative notes application. Logged-in users can write and post 
 - **Real-Time:** SignalR (with auto-reconnect and offline detection)
 - **API:** Web API (REST), OAuth2
 - **API Documentation:** Swagger (`https://localhost:7194/swagger`)
-- **Testing:** Unit testing (NUnit, Moq), E2E testing (Playwright)
+- **Testing:** Unit testing (NUnit, Moq), E2E testing (Playwright), Load testing (Grafana k6)
 
 
 ## Architecture
